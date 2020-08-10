@@ -46,7 +46,7 @@
         NSString *ext = ( (format == 0 ) ? @"jpg" : ( format == 1 ) ? @"png" : @"webp" );
         NSURL *thumbnail = [[url URLByDeletingPathExtension] URLByAppendingPathExtension:ext];
         
-        if( path != nil ) {
+        if( path != nil && ![[path class] isSubclassOfClass:[NSNull class]]) {
             NSString *lastPart = [thumbnail lastPathComponent];
             thumbnail = [NSURL fileURLWithPath:path];
             if( ![[thumbnail pathExtension] isEqualToString:ext] ) {
